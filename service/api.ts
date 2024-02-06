@@ -1,9 +1,10 @@
+import { server } from "@config/index";
 import { RootState } from "@redux/store";
 import { createApi, fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
 
 // Create our baseQuery instance
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:7001/client/",
+  baseUrl: `${server}/client/`,
   prepareHeaders: (headers, { getState }) => {
     // By default, if we have a token in the store, let's use that for authenticated requests
     const token = (getState() as RootState)?.auth.token;

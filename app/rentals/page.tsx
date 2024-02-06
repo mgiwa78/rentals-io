@@ -26,7 +26,11 @@ const Rentals = (props: Props) => {
   const endIndex = startIndex + itemsPerPage;
   const currentItems = rentals?.slice(startIndex, endIndex);
 
-  const totalPages = Math.ceil(rentals?.length / itemsPerPage);
+  let totalPages = 0;
+
+  if (rentals?.length) {
+    totalPages = Math.ceil(rentals?.length / itemsPerPage);
+  }
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
